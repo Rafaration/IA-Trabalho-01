@@ -68,7 +68,7 @@ colunas = largura * 2 + 1
 ## Clone o projeto
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Rafaration/IA-Trabalho-01.git
 ```
 
 ## Entre na pasta
