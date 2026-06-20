@@ -194,7 +194,7 @@ def imprimir_labirinto_binario(labirinto):
         print(" ".join(map(str, linha)))
 
 # Função para converter o labirinto binário para uma visualização em ASCII
-def converter_labirinto_vizualizacao(labirinto_binario):
+def converter_labirinto_visualizacao(labirinto_binario):
     labirinto_visual = ""
 
     for linha in labirinto_binario:
@@ -320,7 +320,7 @@ if __name__ == "__main__":
     armazena_labirinto(end_saida, 'a', maze)
 
     # Converte o labirinto binário para uma visualização em ASCII e imprime
-    labirinto_visual = converter_labirinto_vizualizacao(maze)
+    labirinto_visual = converter_labirinto_visualizacao(maze)
     print(labirinto_visual)
 
     # Gera 5 labirintos quadrados de 5 até 20
