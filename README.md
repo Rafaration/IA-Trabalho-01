@@ -1,4 +1,4 @@
-# Gerador de labirintos para IA/Algorítmos de busca
+# Gerador de Labirintos para IA e Algoritmos de Busca
 
 Gerador de labirintos em Python utilizando **DFS (Depth-First Search)** com saída em:
 
@@ -44,7 +44,7 @@ Exemplo:
 1,0,0,0,1
 1,1,1,0,1
 1,0,0,0,1
-1,1,1,1,1
+1,1,1,0,1
 ```
 
 # Sobre o tamanho do labirinto
@@ -68,13 +68,13 @@ colunas = largura * 2 + 1
 ## Clone o projeto
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/Rafaration/IA-Trabalho-01.git
 ```
 
 ## Entre na pasta
 
 ```bash
-cd seu-repositorio
+cd IA-Trabalho-01
 ```
 
 ## Execute o programa
@@ -98,11 +98,11 @@ print(gerar_labirinto(4, 4))
 ### Saída
 
 ```text
-+--+--+--+--+
++  +--+--+--+
 |        |  |
 +  +--+  +  +
 |     |     |
-+--+--+--+--+
++--+--+--+  +
 ```
 
 # `gerar_labirinto_binario()`
@@ -119,9 +119,15 @@ maze = gerar_labirinto_binario(4, 4)
 
 ```python
 [
- [1,1,1,1,1],
- [0,0,0,0,1],
- [1,1,1,0,1]
+ [1,0,1,1,1,1,1,1,1],
+ [1,0,0,0,1,0,0,0,1],
+ [1,1,1,0,1,0,1,1,1],
+ [1,0,0,0,0,0,1,0,1],
+ [1,0,1,1,1,1,1,0,1],
+ [1,0,0,0,0,0,1,0,1],
+ [1,1,1,1,1,0,1,0,1],
+ [1,0,0,0,0,0,0,0,1],
+ [1,1,1,1,1,1,1,0,1]
 ]
 ```
 
@@ -187,23 +193,23 @@ labirintos/
 
 Cada arquivo contém múltiplos labirintos.
 
-# Exemplo de conteúdo do CSV
+# Exemplo simplificado do CSV
 
 ```text
 LABIRINTO 1
-1,1,1,1,1
-0,0,0,0,1
+1,0,1,1,1
+1,0,0,0,1
 1,1,1,0,1
 
 LABIRINTO 2
-1,1,1,1,1
-0,1,0,0,1
+1,0,1,1,1
+1,1,0,0,1
 1,1,1,0,1
 ```
 
 # Referência
 
-Código base adaptado de:
+Código base inspirado e adaptado de:
 
 Rosetta Code — Maze Generation  
 <https://rosettacode.org/wiki/Maze_generation#Python>
