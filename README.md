@@ -23,6 +23,8 @@ Também possui a implementação do algoritmo de busca **A\*** em C++, usado par
 - Armazenamento de dados úteis para interface e análise
 
 ## Estrutura do Projeto
+
+```text
 .
 ├── AStar.cpp
 ├── maze_maker.py
@@ -31,21 +33,26 @@ Também possui a implementação do algoritmo de busca **A\*** em C++, usado par
 │   ├── maze_5x5.csv
 │   └── ...
 └── README.md
+```
 
 ## Representação do Labirinto
   
 O labirinto binário utiliza:
 
-0 = caminho livre  
-1 = parede  
+```text
+0 = caminho livre
+1 = parede
+```
 
 Exemplo:
 
-1,0,1,1,1  
-1,0,0,0,1  
-1,1,1,0,1  
-1,0,0,0,1  
+```text
+1,0,1,1,1
+1,0,0,0,1
 1,1,1,0,1
+1,0,0,0,1
+1,1,1,0,1
+```
 
 ## Sobre o tamanho do labirinto
   
@@ -57,30 +64,42 @@ Isso acontece porque a matriz também armazena:
 
 A fórmula utilizada é:
 
-linhas = altura * 2 + 1  
+```text
+linhas = altura * 2 + 1
 colunas = largura * 2 + 1
+```
 
 ## Como executar
 
 ### Clone o projeto
 
+```text
 git clone https://github.com/Rafaration/IA-Trabalho-01.git
+```
 
 ### Entre na pasta
 
+```text
 cd IA-Trabalho-01
+```
 
 ### Execute o gerador de labirintos
 
+```text
 python maze_maker.py
+```
 
 ### Compile o A\*
 
+```text
 g++ AStar.cpp -o AStar
+```
 
 ### Execute o A\*
 
+```text
 ./AStar
+```
 
 ## Funções principais do gerador
 
@@ -90,15 +109,19 @@ Gera um labirinto em ASCII.
 
 #### Exemplo
 
+```text
 print(gerar_labirinto(4, 4))
+```
 
 #### Saída
 
-+  +--+--+--+  
-|        |  |  
-+  +--+  +  +  
-|     |     |  
+```text
++  +--+--+--+
+|        |  |
++  +--+  +  +
+|     |     |
 +--+--+--+  +
+```
 
 ## gerar_labirinto_binario()
   
@@ -106,10 +129,13 @@ Gera um labirinto em matriz binária.
 
 #### Exemplo
 
+```text
 maze = gerar_labirinto_binario(4, 4)
+```
 
 #### Saída
 
+```text
 [
  [1,0,1,1,1,1,1,1,1],
  [1,0,0,0,1,0,0,0,1],
@@ -121,6 +147,7 @@ maze = gerar_labirinto_binario(4, 4)
  [1,0,0,0,0,0,0,0,1],
  [1,1,1,1,1,1,1,0,1]
 ]
+```
 
 ## converter_labirinto_visualizacao()
   
@@ -128,7 +155,9 @@ Converte o labirinto binário para visualização ASCII.
 
 #### Exemplo
 
+```text
 print(converter_labirinto_visualizacao(maze))
+```
 
 ## armazena_labirinto()
   
@@ -136,11 +165,13 @@ Salva o labirinto em um arquivo .csv.
 
 #### Exemplo
 
+```text
 armazena_labirinto(
     "labirintos/maze_4x4.csv",
     'a',
     maze
 )
+```
 
 ## geracoes_labirintos()
   
@@ -194,36 +225,42 @@ Define se serão apenas NxN
 
 ### Exemplo
 
+```text
 geracoes_labirintos(
     quantidade_por_tamanho=5,
     tamanho_inicial=5,
     tamanho_final=20,
     apenas_quadrados=True
 )
+```
 
 ## Arquivos gerados
   
 Exemplo:
 
+```text
 labirintos/
 ├── maze_5x5.csv
 ├── maze_6x6.csv
 ├── maze_7x7.csv
-└── ...  
+└── ...
+```
 
 Cada arquivo contém múltiplos labirintos.
 
 ## Exemplo simplificado do CSV
 
-LABIRINTO 1  
-1,0,1,1,1  
-1,0,0,0,1  
-1,1,1,0,1  
-
-LABIRINTO 2  
-1,0,1,1,1  
-1,1,0,0,1  
+```text
+LABIRINTO 1
+1,0,1,1,1
+1,0,0,0,1
 1,1,1,0,1
+
+LABIRINTO 2
+1,0,1,1,1
+1,1,0,0,1
+1,1,1,0,1
+```
 
 ## Implementação do A\*
 
@@ -231,13 +268,17 @@ O arquivo **AStar.cpp** implementa o algoritmo **A\*** para encontrar um caminho
 
 A entrada padrão considerada pelo algoritmo é:
 
-entrada.x = 0  
+```text
+entrada.x = 0
 entrada.y = 1
+```
 
 A saída padrão considerada pelo algoritmo é:
 
-saida.x = número de linhas - 1  
+```text
+saida.x = número de linhas - 1
 saida.y = número de colunas - 2
+```
 
 Essas posições seguem o padrão utilizado pelo gerador de labirintos, onde a entrada fica na parte superior e a saída fica na parte inferior da matriz.
 
@@ -264,7 +305,9 @@ Caso contrário, o nó é colocado na lista fechada e seus vizinhos são analisa
 
 A heurística utilizada no A\* é a distância de Manhattan:
 
+```text
 h = |x_atual - x_saida| + |y_atual - y_saida|
+```
 
 Essa heurística foi escolhida porque o labirinto permite movimentos apenas nas quatro direções principais:
 
@@ -343,7 +386,9 @@ Lê um labirinto específico dentro de um arquivo .csv.
 
 #### Exemplo
 
+```text
 Matriz LABIRINTO = lerLabirinto("labirintos/maze_30x30.csv", 1);
+```
 
 ## imprimirMatriz()
 
@@ -351,7 +396,9 @@ Imprime a matriz carregada no terminal.
 
 #### Exemplo
 
+```text
 imprimirMatriz(LABIRINTO);
+```
 
 ## heuristica()
 
@@ -359,7 +406,9 @@ Calcula a distância de Manhattan entre a posição atual e a saída.
 
 #### Exemplo
 
+```text
 int hInicial = heuristica(entrada, saida);
+```
 
 ## retirar_melhor_f()
 
@@ -367,7 +416,9 @@ Percorre a lista aberta e remove o nó com menor valor de f.
 
 #### Exemplo
 
+```text
 No atual = retirar_melhor_f(aberta);
+```
 
 ## esta_na_lista()
 
@@ -375,7 +426,9 @@ Verifica se uma posição já está em uma lista.
 
 #### Exemplo
 
+```text
 bool existe = esta_na_lista(fechada, posVizinho);
+```
 
 ## substituir_se_g_menor()
 
@@ -383,7 +436,9 @@ Atualiza um nó caso um caminho melhor até ele seja encontrado.
 
 #### Exemplo
 
+```text
 substituir_se_g_menor(aberta, posVizinho, novoG, novoH, atual.posicao);
+```
 
 ## reconstruir_caminho()
 
@@ -391,7 +446,9 @@ Reconstrói o caminho da saída até a entrada usando os pais dos nós.
 
 #### Exemplo
 
+```text
 vector<Posicao> caminho = reconstruir_caminho(fechada, atual, entrada);
+```
 
 ## imprimir_labirinto_caminho()
 
@@ -399,7 +456,9 @@ Imprime o labirinto com o caminho encontrado marcado na matriz.
 
 #### Exemplo
 
+```text
 imprimir_labirinto_caminho(LABIRINTO, fechada, atual, entrada);
+```
 
 ## AStar()
 
@@ -407,26 +466,32 @@ Executa o algoritmo A\* e retorna uma struct com os dados úteis da execução.
 
 #### Exemplo
 
+```text
 DadosUteis dadosAStar = AStar(LABIRINTO, entrada, saida, nomeDoArquivo, numeroAlvo);
+```
 
 ## Exemplo de saída do A\*
 
 Durante a execução, o algoritmo mostra o nó atual analisado:
 
-Atual: (0, 1) g=0 h=56 f=56  
-Atual: (1, 1) g=1 h=55 f=56  
+```text
+Atual: (0, 1) g=0 h=56 f=56
+Atual: (1, 1) g=1 h=55 f=56
 Atual: (2, 1) g=2 h=54 f=56
+```
 
 Ao final, exibe um resumo com as principais métricas:
 
-Terminou com SUCESSO!!!!!!  
-Total de nos gerados: 127  
-Total de nos expandidos: 83  
-Total de nos visitados: 83  
-Custo da solucao: 58  
-Profundidade da solucao: 58  
-Tempo de execucao: 1.2345 ms  
+```text
+Terminou com SUCESSO!!!!!!
+Total de nos gerados: 127
+Total de nos expandidos: 83
+Total de nos visitados: 83
+Custo da solucao: 58
+Profundidade da solucao: 58
+Tempo de execucao: 1.2345 ms
 Fator de ramificacao medio: 1.5181
+```
 
 ## Objetivo da implementação
 
@@ -439,5 +504,6 @@ As métricas coletadas serão utilizadas para comparar o desempenho dos algoritm
 
 ## Referência
   
-Código base para o gerador de labirinto inspirado e adaptado de:  
+Código base inspirado e adaptado de:  
+Rosetta Code — Maze Generation
 <https://rosettacode.org/wiki/Maze_generation#Python>
