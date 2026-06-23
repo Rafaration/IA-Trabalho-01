@@ -7,7 +7,7 @@
     . Rafael Loureiro Fockink,
     . Vitor Krieser Roehrs
     . Eduardo Nogueira Korte
-    . Felipe Thomé
+    . Felipe Kuznik Thome
 */
 
 // Aqui vou utilizar funções já implementadas

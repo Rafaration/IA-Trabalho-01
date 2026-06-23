@@ -1,5 +1,22 @@
+'''
+    Código gerador de labirinto para a matéria de IA implementado pelos alunos:
+    . Rafael Loureiro Fockink,
+    . Vitor Krieser Roehrs
+    . Eduardo Nogueira Korte
+    . Felipe Kuznik Thome
+
+'''
+
 from random import shuffle, randrange
 import os
+
+
+'''
+////////////////////////////////////////////////////////////////////
+/////////// GERA NO MÁXIMO 44X44 /////////////////////////////////////
+/////////// !!!!!!!!!!!!!!!!!! /////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+'''
 
 # definição das dimensões do labirinto
 largura = 3
@@ -305,7 +322,7 @@ def geracoes_labirintos(quantidade_por_tamanho=5, tamanho_inicial=4, tamanho_fin
                     print(f"Adicionado labirinto "f"{numero_labirinto} em "f"{caminho_arquivo}")
 
 if __name__ == "__main__":
-
+    
     # Gera e imprime o labirinto utilizando a função de referência
     print(gerar_labirinto(largura, altura))
 
