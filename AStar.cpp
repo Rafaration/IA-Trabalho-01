@@ -23,90 +23,12 @@
 #include <list>
 #include <chrono> // medir o tempo de execução
 #include <iomanip>
+#include "LerLabirinto.cpp"
 
 using namespace std;
 
 using Matriz = vector<vector<int>>;
 
-
-/////////////////////////////////////////////////////////////
-// Funções implementadas no código de Busca primeiro melhor:
-/////////////////////////////////////////////////////////////
-
-////// FUNÇÃO APENAS PARA LER O LABIRINTO /////
-Matriz lerLabirinto(const string& nomeArquivo, int numeroDesejado) {
-    ifstream arquivo(nomeArquivo);
-    Matriz matrizEncontrada;
-    
-    if (!arquivo.is_open()) {
-        cerr << "Erro ao abrir o arquivo: " << nomeArquivo << endl;
-        return matrizEncontrada;
-    }
-
-    string linha;
-    
-    while (getline(arquivo, linha)) {
-
-        if (linha.find_first_not_of(" \t\r\n") == string::npos) continue;
-
-        if (linha.find("LABIRINTO") != string::npos) {
-            stringstream ss(linha);
-            string nome;
-            int numero;
-
-            if (ss >> nome >> numero) {
-                
-                if (numero == numeroDesejado) {
-                    while (getline(arquivo, linha)) {
-                        
-                        if (linha.find("LABIRINTO") != string::npos || linha.find_first_not_of(" \t\r\n") == string::npos) {
-                            break;
-                        }
-                        
-                        vector<int> linhaMatriz;
-                        stringstream ssMatriz(linha);
-                        string valorTexto;
-                        
-                        while (getline(ssMatriz, valorTexto, ',')) {
-                            if (valorTexto.find_first_not_of(" \t\r\n") == string::npos) continue;
-                            linhaMatriz.push_back(stoi(valorTexto));
-                        }
-                        
-                        if (!linhaMatriz.empty()) {
-                            matrizEncontrada.push_back(linhaMatriz);
-                        }
-                    }
-                    
-                    arquivo.close();
-                    return matrizEncontrada;
-                }
-            }
-        }
-    }
-
-    arquivo.close();
-    cout << "Labirinto com o numero " << numeroDesejado << " nao foi encontrado." << endl;
-    return matrizEncontrada;
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////
-////// FUNÇÃO APENAS PARA IMPRIMIR O LABIRINTO (POSSIVELMENTE IREMOS EXCLUIR) /////
-///////////////////////////////////////////////////////////////////////////////////
-
-void imprimirMatriz(const Matriz& matriz) {
-    for (const auto& linha : matriz) {
-        for (int valor : linha) {
-            if (valor == 2) {
-                cout << "* ";
-            } else {
-                cout << valor << " ";
-            }
-        }
-        cout << endl;
-    }
-}
-///////////////////////////////////////////////////////////////////////////////////
 
 class Posicao {
     public:
