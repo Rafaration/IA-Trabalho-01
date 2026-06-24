@@ -587,7 +587,7 @@ As métricas coletadas serão utilizadas para comparar o desempenho dos algoritm
   
 Código base inspirado e adaptado de:
 
-```text
+
 Rosetta Code — Maze Generation
 <https://rosettacode.org/wiki/Maze_generation#Python>
-```
+
