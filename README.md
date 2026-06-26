@@ -252,6 +252,10 @@ LABIRINTO 2
 1,1,1,0,1
 ```
 
+## gerar_n_labirintos ()
+
+Funciona próximo a função anterior, gera N labirintos apenas da dimenção passada como parâmetro
+
 ## Biblioteca de leitura dos labirintos
 
 As funções responsáveis por carregar e exibir os labirintos foram separadas do `AStar.cpp` e ficam nos arquivos externos:
