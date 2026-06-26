@@ -236,8 +236,7 @@ def armazena_labirinto(end_saida, modo, labirinto):
             arquivo.write(','.join(map(str, linha)) + '\n')
     
 # Função que gera N labirintos de N tamanhos
-def geracoes_labirintos(quantidade_por_tamanho=5, tamanho_inicial=4, tamanho_final=20, apenas_quadrados=True
-):
+def geracoes_labirintos(quantidade_por_tamanho=5, tamanho_inicial=4, tamanho_final=20, apenas_quadrados=True):
     """
     Gera vários labirintos e armazena
     vários no MESMO arquivo usando append.
@@ -320,6 +319,39 @@ def geracoes_labirintos(quantidade_por_tamanho=5, tamanho_inicial=4, tamanho_fin
                         arquivo.write("\n")
 
                     print(f"Adicionado labirinto "f"{numero_labirinto} em "f"{caminho_arquivo}")
+
+# Função que gera N labirintos de um tamanho especifico
+def gerar_n_labirintos (quantidade_por_tamanho=5, linhas=5, colunas=5):
+    """
+    Gera N labirintos de tamanho MxN e armazena
+    vários no MESMO arquivo usando append.
+    """
+
+    # Cria pasta caso não exista
+    os.makedirs("labirintos", exist_ok=True)
+
+    caminho_arquivo = (f"labirintos/"f"maze_{linhas}x{colunas}.csv")
+
+    # Limpa o arquivo antes
+    open(caminho_arquivo, 'w').close()
+
+    for numero_labirinto in range(1,quantidade_por_tamanho + 1):
+
+        maze = gerar_labirinto_binario(linhas, colunas)
+
+        with open(caminho_arquivo, 'a') as arquivo:
+
+            # Cabeçalho
+            arquivo.write(f"LABIRINTO {numero_labirinto}\n")
+
+            # Escreve o labirinto
+            for linha in maze:arquivo.write(','.join(map(str, linha)) + '\n')
+
+            # Separador
+            arquivo.write("\n")
+
+        print(f"Adicionado labirinto "f"{numero_labirinto} em "f"{caminho_arquivo}")
+
 
 if __name__ == "__main__":
     
