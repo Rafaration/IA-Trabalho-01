@@ -899,9 +899,68 @@ DadosUteis AStar_mod(const Matriz &LABIRINTO, Posicao entrada, Posicao saida, st
     return estado.dados;
 }
 
+void calcularMediasAStar(const string& arquivo, int quantidadeLabirintos) {
+    double somaNosGerados = 0;
+    double somaNosExpandidos = 0;
+    double somaTempo = 0;
+    double somaCusto = 0;
+    double somaProfundidade = 0;
+
+    int executados = 0;
+
+    for (int i = 1; i <= quantidadeLabirintos; i++) {
+
+        Matriz labirinto = lerLabirinto(arquivo, i);
+
+        if (labirinto.empty())
+            continue;
+
+        Posicao entrada;
+        Posicao saida;
+
+        DadosUteis dados =
+            AStar_mod(labirinto, entrada, saida, arquivo, i);
+
+        somaNosGerados += dados.nos_gerados;
+        somaNosExpandidos += dados.nos_expandidos;
+        somaTempo += dados.tempo_execucao_ms;
+
+        if (dados.encontrou_solucao) {
+            somaCusto += dados.custo_solucao;
+            somaProfundidade += dados.profundidade_solucao;
+        }
+
+        executados++;
+    }
+
+    cout << "\n========== MÉDIAS A* ==========\n";
+
+    cout << "Labirintos analisados: "
+         << executados << endl;
+
+    cout << "Média nós gerados: "
+         << somaNosGerados / executados << endl;
+
+    cout << "Média nós expandidos: "
+         << somaNosExpandidos / executados << endl;
+
+    cout << "Média tempo (ms): "
+         << somaTempo / executados << endl;
+
+    cout << "Média custo solução: "
+         << somaCusto / executados << endl;
+
+    cout << "Média profundidade: "
+         << somaProfundidade / executados << endl;
+}
+
 
 int main() {
-    string nomeDoArquivo = "labirintos/maze_30x30.csv";
+    string nomeDoArquivo = "labirintos/maze_15x30.csv";
+
+    calcularMediasAStar(nomeDoArquivo, 5);
+
+    /*
     int numeroAlvo = 1;
 
     Matriz LABIRINTO = lerLabirinto(nomeDoArquivo, numeroAlvo);
@@ -919,6 +978,7 @@ int main() {
 
     // DadosUteis dados_AStar = AStar(LABIRINTO, entrada, saida, nomeDoArquivo, numeroAlvo);
 
+    
     DadosUteis dados_AStar = AStar_mod(LABIRINTO, entrada, saida, nomeDoArquivo, numeroAlvo);
 
     cout << "\n############### RESUMO A* ################\n";
@@ -937,6 +997,7 @@ int main() {
     cout << "Fator de ramificacao medio: " << fixed << setprecision(4) 
         << dados_AStar.fator_ramificacao_medio << endl;
     cout << "############################################\n";
+    */
 
     return 0;
 }
