@@ -9,14 +9,10 @@
 
 from random import shuffle, randrange
 import os
+import sys
 
+sys.setrecursionlimit(5000)
 
-'''
-////////////////////////////////////////////////////////////////////
-/////////// GERA NO MÁXIMO 44X44 /////////////////////////////////////
-/////////// !!!!!!!!!!!!!!!!!! /////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-'''
 
 # definição das dimensões do labirinto
 largura = 3
@@ -371,6 +367,6 @@ if __name__ == "__main__":
     # Converte o labirinto binário para uma visualização em ASCII e imprime
     labirinto_visual = converter_labirinto_visualizacao(maze)
     print(labirinto_visual)
-
-    # Gera 5 labirintos quadrados de 5 até 20
-    geracoes_labirintos(5, 5, 20, True)
+    
+    # Gera 5 labirintos de 5x5 até 40x40
+    geracoes_labirintos(5, 5, 40, False)
