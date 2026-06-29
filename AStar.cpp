@@ -383,12 +383,14 @@ DadosUteis AStar(const Matriz &LABIRINTO, Posicao entrada, Posicao saida, string
                 dados.fator_ramificacao_medio = (double)(dados.nos_gerados - 1) / dados.nos_expandidos;
             }
 
+            /*
             cout << "Terminou com FALHA: nao existe caminho ate a saida." << endl;
             cout << "Total de nos gerados: " << dados.nos_gerados << endl;
             cout << "Total de nos expandidos: " << dados.nos_expandidos << endl;
             cout << "Tempo de execucao: " << fixed << setprecision(4) 
                  << dados.tempo_execucao_ms << " ms" << endl;
-
+            */
+                
             return dados;
             
         }
@@ -397,12 +399,14 @@ DadosUteis AStar(const Matriz &LABIRINTO, Posicao entrada, Posicao saida, string
         // [Pseudocódigo] considere o nó com a menor pontuação f na lista aberta
         atual = retirar_melhor_f(aberta);
 
+        /*
         cout << "Atual: (" 
              << atual.posicao.x << ", " 
              << atual.posicao.y << ") "
              << "g=" << atual.g << " "
              << "h=" << atual.h << " "
              << "f=" << atual.f << endl;
+        */
 
         // [A*]
         // [Pseudocódigo] se (este nó é o nó de destino):
@@ -437,7 +441,7 @@ DadosUteis AStar(const Matriz &LABIRINTO, Posicao entrada, Posicao saida, string
                 dados.fator_ramificacao_medio = (double)(dados.nos_gerados - 1) / dados.nos_expandidos;
             }
 
-
+            /*
             cout << "\nTerminou com SUCESSO!!!!!!" << endl;
             cout << "Total de nos gerados: " << dados.nos_gerados << endl;
             cout << "Total de nos expandidos: " << dados.nos_expandidos << endl;
@@ -448,11 +452,11 @@ DadosUteis AStar(const Matriz &LABIRINTO, Posicao entrada, Posicao saida, string
                  << dados.tempo_execucao_ms << " ms" << endl;
             cout << "Fator de ramificacao medio: " << fixed << setprecision(4) 
                  << dados.fator_ramificacao_medio << endl;
-
+            */
 
             // [Função auxiliar]
             // [Representação visual A*] Printa o labirinto final com . mostrando o caminho
-            imprimir_labirinto_caminho(LABIRINTO, fechada, atual, entrada);
+            // imprimir_labirinto_caminho(LABIRINTO, fechada, atual, entrada);
 
             destinoAlcancado = true;
 
@@ -704,11 +708,13 @@ bool AStar_inc(EstadoAStar &estado) {
         estado.finalizado = true;
         estado.destino_alcancado = false;
 
+        /*
         cout << "Terminou com FALHA: nao existe caminho ate a saida." << endl;
         cout << "Total de nos gerados: " << estado.dados.nos_gerados << endl;
         cout << "Total de nos expandidos: " << estado.dados.nos_expandidos << endl;
         cout << "Tempo de execucao: " << fixed << setprecision(4)
              << estado.dados.tempo_execucao_ms << " ms" << endl;
+        */
 
         return true;
     }
@@ -717,12 +723,14 @@ bool AStar_inc(EstadoAStar &estado) {
     // [Pseudocódigo] considere o nó com a menor pontuação f na lista aberta
     estado.atual = retirar_melhor_f(estado.aberta);
 
+    /*
     cout << "Atual: ("
          << estado.atual.posicao.x << ", "
          << estado.atual.posicao.y << ") "
          << "g=" << estado.atual.g << " "
          << "h=" << estado.atual.h << " "
          << "f=" << estado.atual.f << endl;
+    */
 
     // [A*]
     // [Pseudocódigo] se (este nó é o nó de destino):
@@ -762,6 +770,7 @@ bool AStar_inc(EstadoAStar &estado) {
         estado.finalizado = true;
         estado.destino_alcancado = true;
 
+        /*
         cout << "\nTerminou com SUCESSO!!!!!!" << endl;
         cout << "Total de nos gerados: " << estado.dados.nos_gerados << endl;
         cout << "Total de nos expandidos: " << estado.dados.nos_expandidos << endl;
@@ -772,9 +781,10 @@ bool AStar_inc(EstadoAStar &estado) {
              << estado.dados.tempo_execucao_ms << " ms" << endl;
         cout << "Fator de ramificacao medio: " << fixed << setprecision(4)
              << estado.dados.fator_ramificacao_medio << endl;
-
+        */
+            
         // [Representação visual A*] Printa o labirinto final com . mostrando o caminho
-        imprimir_labirinto_caminho(*estado.labirinto, estado.fechada, estado.atual, estado.entrada);
+        // imprimir_labirinto_caminho(*estado.labirinto, estado.fechada, estado.atual, estado.entrada);
 
         return true;
     }
@@ -956,7 +966,7 @@ void calcularMediasAStar(const string& arquivo, int quantidadeLabirintos) {
 
 
 int main() {
-    string nomeDoArquivo = "labirintos/maze_15x30.csv";
+    string nomeDoArquivo = "labirintos/maze_20x30.csv";
 
     calcularMediasAStar(nomeDoArquivo, 5);
 
